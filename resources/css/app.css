@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Komponen kecil menggunakan Tailwind @apply; tidak membutuhkan library UI tambahan. */
+@layer components {
+    .btn-primary { @apply inline-flex min-h-12 items-center justify-center rounded-xl bg-teal-700 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-40; }
+    .btn-secondary { @apply inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100; }
+    .btn-danger { @apply inline-flex min-h-12 items-center justify-center rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700 hover:bg-red-100; }
+    .btn-quantity { @apply grid size-12 place-items-center rounded-lg border border-slate-200 bg-white text-xl font-bold disabled:opacity-30; }
+    .field { @apply block min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base focus:border-teal-600 focus:outline-2 focus:outline-teal-600; }
+    .field-label { @apply mb-2 block text-sm font-semibold text-slate-700; }
+    .nav-link { @apply inline-flex min-h-12 items-center rounded-xl px-4 py-3 font-medium text-slate-500 hover:bg-slate-100; }
+    .nav-active { @apply bg-teal-50 text-teal-800; }
+    .product-card { @apply min-h-52 rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm hover:border-teal-600 hover:bg-teal-50 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40; }
+    .status-badge { @apply inline-block rounded-full px-3 py-2 text-xs font-semibold; }
+    .status-pending { @apply bg-amber-100 text-amber-800; }
+    .status-paid { @apply bg-teal-100 text-teal-800; }
+    .status-cancelled { @apply bg-red-100 text-red-800; }
+}
+
+button, a, input, select, textarea { touch-action: manipulation; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+[hidden] { display: none !important; }
+
+/* Browser menyediakan dialog cetak; hanya struk yang ikut dicetak. */
+@media print {
+    .no-print { display: none !important; }
+    body { background: white; }
+    main { padding: 0; }
+    .receipt { border: none; box-shadow: none; padding: 0; }
+}
